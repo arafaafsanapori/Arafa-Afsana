@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Cinematic Video Generator | AI-Style Image Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🎬 Cinematic Video Generator</h1>
+            <p>Transform static images into cinematic animations with camera motion, particles & light rays</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <div class="input-section" id="inputSection">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/webp,image/jpg" hidden>
+                    <div class="upload-icon">📸</div>
+                    <h3>Upload Your Image</h3>
+                    <p>Click or drag & drop (JPG, PNG, WEBP)</p>
+                    <button class="btn-primary" id="uploadBtn">Choose Image</button>
+                </div>
+            </div>
+
+            <!-- Preview & Controls Section (Hidden initially) -->
+            <div class="preview-section hidden" id="previewSection">
+                <!-- Canvas Preview -->
+                <div class="canvas-container">
+                    <canvas id="previewCanvas"></canvas>
+                    <div class="canvas-overlay" id="canvasOverlay">
+                        <div class="play-indicator">▶ ANIMATING</div>
+                    </div>
+                </div>
+
+                <!-- Controls Panel -->
+                <div class="controls-panel">
+                    <h3>Cinematic Controls</h3>
+                    
+                    <div class="control-group">
+                        <label>⏱️ Duration (seconds)</label>
+                        <input type="range" id="durationSlider" min="3" max="12" step="0.5" value="6">
+                        <span id="durationValue">6.0s</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>📐 Aspect Ratio</label>
+                        <select id="aspectRatio">
+                            <option value="16:9">16:9 - Cinematic Widescreen (1920x1080)</option>
+                            <option value="9:16">9:16 - Vertical (1080x1920)</option>
+                            <option value="1:1">1:1 - Square (1080x1080)</option>
+                            <option value="4:3">4:3 - Classic (1440x1080)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label>🎥 Camera Motion</label>
+                        <select id="cameraMotion">
+                            <option value="dolly-in">Slow Dolly-In (Push forward)</option>
+                            <option value="dolly-out">Slow Dolly-Out (Pull back)</option>
+                            <option value="pan-left">Pan Left</option>
+                            <option value="pan-right">Pan Right</option>
+                            <option value="parallax">3D Parallax (Ken Burns)</option>
+                            <option value="zoom-pan">Zoom + Pan Combined</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label>💨 Motion Intensity</label>
+                        <input type="range" id="intensitySlider" min="0.5" max="2.5" step="0.1" value="1.5">
+                        <span id="intensityValue">1.5x</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>✨ Particle Density</label>
+                        <input type="range" id="particleDensity" min="0" max="100" step="5" value="60">
+                        <span id="particleValue">60%</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>💡 Light Rays Intensity</label>
+                        <input type="range" id="lightIntensity" min="0" max="100" step="5" value="70">
+                        <span id="lightValue">70%</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label>🎨 Color Grade</label>
+                        <select id="colorGrade">
+                            <option value="none">None (Original)</option>
+                            <option value="warm">Warm Cinematic (Gold/Amber)</option>
+                            <option value="cool">Cool Cinematic (Blue/Teal)</option>
+                            <option value="vintage">Vintage Film Fade</option>
+                            <option value="dramatic">Dramatic Contrast</option>
+                        </select>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" id="previewBtn">▶ Preview Animation</button>
+                        <button class="btn-success" id="exportBtn">📹 Export MP4 Video</button>
+                        <button class="btn-secondary" id="resetBtn">↺ New Image</button>
+                    </div>
+
+                    <div class="export-status" id="exportStatus"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Premium Cinematic Quality • 24-30 FPS • No Watermark • Professional Color Grading</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ffmpeg.js@0.12.4/ffmpeg.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
